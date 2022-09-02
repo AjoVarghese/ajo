@@ -513,7 +513,51 @@
           </div>
           
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form id="submit-form"  class="php-email-form" action="" name="f1">
+
+            <form action="" name="f1" method="post" id="submit-form"  class="php-email-form">
+              <table style="width: 100%">
+              <div class="contact__form-field">
+                    <tr>
+                    <td><label class="form-group" for="email">Name</label>
+                      <input type="text" class="form-control" id="inpn" name = "name" placeholder="enter your name"></td>
+                    </tr>             
+                    <tr>
+                    <td><p class="ere"  id="pname"></p></td>
+                    </tr>
+              </div>
+
+
+
+              <div class="contact__form-field">
+                    <tr>
+                    <td><label class="form-group" for="email">Email</label>
+                      <input type="email"id="inpe"  class="form-control" name = "email" placeholder="enter your Email ID" data-rule="required"></td>
+                    </tr>
+                    <tr>
+                    <td><p class="ere" id="pemail"></p></td>
+                    </tr>
+              </div>
+
+
+              <div class="contact__form-field"></div>
+                      <tr>
+                      <td><label class="form-group" for="email">Message</label>
+                        <textarea name="message" class="form-control" id="inpa" id="" cols="30" rows="10"></textarea></td>
+                      </tr>
+                      <tr>
+                      <td><p class="ere" id="parea"></p></td>
+                      </tr>
+                      <tr> 
+                      <td>
+                        <div class="text-center"><button type="submit" onclick="return validate()">Send Message</button></div>
+                        <!-- <button type="submit" class="text-center" onclick="return validate()">submit</button> -->
+                      </td>
+                     
+                      </tr> 
+                </table>
+           </form>
+      </div>
+            <!-- <form id="submit-form"  class="php-email-form" action="" name="f1">
               <div class="row">
                 <div class="form-group col-md-6">
                   <label for="email" >Your Name</label>
@@ -538,38 +582,9 @@
               
               <div class="text-center"><button type="submit" onclick="return validate()">Send Message</button></div>
             </form>
-          </div>
-
-          <!-- <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form id="submit-form"  class="php-email-form" action="" name="f1">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name" >Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                  <p class="ere" id="pname"></p>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                  <p class="ere" id="pname"></p>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-               <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div> 
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
           </div> -->
+
+          
 
         </div>
 
@@ -612,8 +627,6 @@
    
   <script>
     function validate(){
-
-     
         if(document.f1.name.value==='')
         {
             document.getElementById("pname").innerHTML="*fill the form";
@@ -621,7 +634,7 @@
             document.getElementById('inpn').style.borderColor='red'
             return false;
         }
-         else if(!isNaN(document.f1.name.value))
+        else if(!isNaN(document.f1.name.value))
         {
             document.getElementById("pname").innerHTML="*only text";
             document.getElementById('inpn').focus;
@@ -643,46 +656,65 @@
         }
         else{
           $("#submit-form").submit((e)=>{
-        e.preventDefault()
-        $.ajax({
-            url:"https://script.google.com/macros/s/AKfycbx8WJWFVD9AcxioCEd59VuCyYhtIfbntSZSBF2KMAKZv71a8k0iK04aNZTRg2GfG0JdCg/exec",
-            data:$("#submit-form").serialize(),
-            method:"post",
-            success:function (response){
-                alert("Form submitted successfully")
-                window.location.reload()
-                //window.location.href="https://google.com"
-            },
-            error:function (err){
-                alert("Something Error")
-
-            }
+            e.preventDefault()
+            $.ajax({
+                url:"https://script.google.com/macros/s/AKfycbz1I29a6bZHD_RlN7KK2UMzFuK9IWADJ4bvZzY5o_mWiJGGx4rEhbKAhTnBaA1hWqwW/exec",
+                data:$("#submit-form").serialize(),
+                method:"post",
+                success:function (response){
+                    alert("Form submitted successfully")
+                    window.location.reload()
+                    //window.location.href="https://google.com"
+                },
+                error:function (err){
+                    alert("Something Error")
+    
+                }
+            })
         })
-    })
         }
       }
-      </script>
-
-
-  <!-- <script>
-    $("#submit-form").submit((e)=>{
-        e.preventDefault()
-        $.ajax({
-            url:"https://script.google.com/macros/s/AKfycbx8WJWFVD9AcxioCEd59VuCyYhtIfbntSZSBF2KMAKZv71a8k0iK04aNZTRg2GfG0JdCg/exec",
-            data:$("#submit-form").serialize(),
-            method:"post",
-            success:function (response){
-                alert("Form submitted successfully")
-                window.location.reload()
-                //window.location.href="https://google.com"
-            },
-            error:function (err){
-                alert("Something Error")
-
-            }
-        })
-    })
-</script> -->
+  </script>
+  
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <form id="submit-form"  class="php-email-form" action="" name="f1">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name" >Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name" required>
+                  <p class="ere" id="pname"></p>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email" required>
+                  <p class="ere" id="pname"></p>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+              </div>
+               <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div> 
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+          </div> -->
